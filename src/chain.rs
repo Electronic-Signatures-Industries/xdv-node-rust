@@ -6,6 +6,7 @@ use abci::{
     types::*,
 };
 use tokio::{sync::Mutex, time::sleep};
+use tracing_subscriber::FmtSubscriber;
 use tracing::{subscriber::set_global_default, Level};
 
 
@@ -175,6 +176,12 @@ fn parse_bytes_to_counter(bytes: &[u8]) -> Result<u64, ()> {
 
 pub fn xdv_chain_node() -> Server<ConsensusConnection, MempoolConnection, InfoConnection, SnapshotConnection>
 {
+
+    let subscriber = FmtSubscriber::builder()
+        .with_max_level(Level::DEBUG)
+        .finish();
+    set_global_default(subscriber).unwrap();
+
     let committed_state: Arc<Mutex<CounterState>> = Default::default();
     let current_state: Arc<Mutex<Option<CounterState>>> = Default::default();
 

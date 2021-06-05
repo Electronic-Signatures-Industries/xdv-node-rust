@@ -9,8 +9,6 @@ use crate::chain::xdv_chain_node;
 use tokio::{sync::Mutex, time::sleep};
 use verifier::Verifier;
 use verifier::RpcImpl;
-use tracing_subscriber::FmtSubscriber;
-use tracing::{subscriber::set_global_default, Level};
 
 // use jsonrpc_http_server::jsonrpc_core::{IoHandler, Value, Params};
 use jsonrpc_http_server::ServerBuilder;
@@ -28,14 +26,11 @@ async fn main() -> std::io::Result<()> {
 
 	// server.wait();
 
-    let subscriber = FmtSubscriber::builder()
-        .with_max_level(Level::DEBUG)
-        .finish();
-    set_global_default(subscriber).unwrap();
-
     let server = xdv_chain_node();
-    server
+
+    server    
         .run("127.0.0.1:26658".parse::<SocketAddr>().unwrap())
         .await
 
+        
 }
