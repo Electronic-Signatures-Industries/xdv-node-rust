@@ -1,6 +1,6 @@
 # xdv-node
 
-A rust json-rpc layer 2 for EVM smart contracts
+A rust json-rpc layer 2 for EVM smart contracts, built with Tendermint
 
 ## Features
 
