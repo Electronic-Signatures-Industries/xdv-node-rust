@@ -1,0 +1,14 @@
+[package]
+name = "xdv-node"
+version = "0.1.0"
+authors = ["Rogelio Morrell <molekilla@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+jsonrpc-core = "17.0.0"
+jsonrpc-core-client = "17.0.0"
+jsonrpc-derive = "17.0.0"
+jsonrpc-http-server = "17.0.0"
+jsonrpsee = "0.2.0"
